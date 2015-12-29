@@ -1,0 +1,24 @@
+<div class="container">
+	<div class="row">
+		<div ng-repeat="gallery in ctrl.galleries">
+			<div class="clearfix" ng-if="$index % 3 === 0"></div>
+			<div class="col-md-4">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h5>
+							{{gallery.galleryName}}
+							<small>{{gallery.createDate}}</small>
+						</h5>
+					</div>
+					<div class="gallery-thumbnail panel-body text-center">
+						<a ui-sref="pictures({galleryName: '{{gallery.galleryName}}'})">
+							<div
+									afkl-lazy-image="{{gallery.coverUrl}}"
+									afkl-lazy-image-options="{alt: '{{gallery.galleryName}}', className: 'thumbnail-image'}"></div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

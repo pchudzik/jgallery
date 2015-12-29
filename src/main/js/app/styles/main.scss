@@ -1,0 +1,50 @@
+$icon-font-path: "../fonts/";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.gallery-thumbnail {
+  padding: 5px
+}
+
+.thumbnail-image {
+  max-width: 350px;
+  max-height: 233px;
+}
+
+.image-view {
+  display: table;
+  height: 100%;
+
+  div {
+    display: table-cell;
+    float: none;
+    vertical-align: middle;
+  }
+
+  .slider {
+    width: 2%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 5px;
+
+    a {
+      display: inline-block;
+      background: aliceblue;
+      height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  .image {
+    width: 98%
+  }
+}
+
+.thumbnail {
+  padding: 0;
+  border: 5px solid #777;
+  display: block;
+  margin: auto;
+}
+.active-thumbnail {
+  border-color: black;
+}

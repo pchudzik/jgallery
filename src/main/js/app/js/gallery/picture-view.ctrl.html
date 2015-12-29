@@ -1,0 +1,43 @@
+<div class="container-fluid" tabindex="0" ng-keydown="ctrl.switchImage($event)">
+	<div class="row">
+		<div class="col-md-11" style="padding-left: 120px">
+			<h3>
+				image title
+				<small>image creation date</small>
+			</h3>
+		</div>
+		<div class="col-md-1">
+			<button type="button" class="btn btn-default">
+				<span class="glyphicon glyphicon-level-up"></span>
+				Back
+			</button>
+		</div>
+	</div>
+	<div class="row image-view">
+		<div class="col-md-1 slider">
+			<button class="btn btn-default" ng-click="ctrl.previous()" ng-disabled="!ctrl.hasPrevious()">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			</button>
+		</div>
+		<div class="col-md-10 image">
+			<a href="{{ctrl.bigPicture.hugeUrl}}" target="_blank">
+				<img src="{{ctrl.bigPicture.bigUrl}}" class="img-responsive center-block">
+			</a>
+		</div>
+		<div class="col-md-1 slider">
+			<button class="btn btn-default" ng-click="ctrl.next()" ng-disabled="!ctrl.hasNext()">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			</button>
+		</div>
+	</div>
+	<div class="row" style="padding-top: 10px">
+		<div ng-repeat="thumbnail in ctrl.thumbnails" class="col-md-2">
+			<a ng-click="ctrl.openBig(thumbnail)">
+				<img
+						class="thumbnail"
+						ng-class="{'active-thumbnail': ctrl.isActive(thumbnail)}"
+						src="{{thumbnail.miniUrl}}">
+			</a>
+		</div>
+	</div>
+</div>
