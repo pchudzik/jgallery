@@ -18,9 +18,9 @@ function PictureService(httpClient, _, apiUrl) {
 			encodeURIComponent(picture.name)
 		);
 
-		picture.miniUrl = thumbnailUrl + '?height=120';
-		picture.smallUrl = thumbnailUrl + '?height=260';
-		picture.bigUrl = thumbnailUrl + '?height=600';
+		picture.miniUrl = thumbnailUrl + '?height=220';
+		picture.smallUrl = thumbnailUrl + '?height=460';
+		picture.bigUrl = thumbnailUrl + '?height=800';
 		picture.hugeUrl = thumbnailUrl + '?height=1200';
 
 		return picture;

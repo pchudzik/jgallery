@@ -31,10 +31,10 @@
 		</div>
 	</div>
 	<div class="row" style="padding-top: 10px">
-		<div ng-repeat="thumbnail in ctrl.thumbnails" class="col-md-2">
+		<div ng-repeat="thumbnail in ctrl.thumbnails" class="col-md-3">
 			<a ng-click="ctrl.openBig(thumbnail)">
 				<img
-						class="thumbnail"
+						class="img-thumbnail"
 						ng-class="{'active-thumbnail': ctrl.isActive(thumbnail)}"
 						src="{{thumbnail.miniUrl}}">
 			</a>

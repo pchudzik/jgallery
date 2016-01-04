@@ -64,18 +64,18 @@ function PictureViewController(_, $state, pictures) {
 	}
 
 	function loadImages() {
-		const thumbnailsCount = 6;
+		const thumbnailsCount = 4;
 		vm.bigPicture = pictures[vm.currentBigPictureIndex];
 
 		let start = vm.currentBigPictureIndex - 1;
-		let end = vm.currentBigPictureIndex + 5;
+		let end = vm.currentBigPictureIndex + 3;
 		if (start < 0) {
 			start = 0;
-			end = 6;
+			end = thumbnailsCount;
 		}
 		if (end > pictures.length) {
 			end = pictures.length;
-			start = end - 6;
+			start = end - thumbnailsCount;
 		}
 
 		if(thumbnailsCount >= pictures.length) {

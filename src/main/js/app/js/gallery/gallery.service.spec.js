@@ -3,7 +3,7 @@
 import angular from 'angular';
 
 describe('gallery.service.spec.js', () => {
-	const galleryCoverWidth = '?width=360';
+	const galleryCoverWidth = '?width=560';
 	let $httpBackend;
 	let apiUrl;
 

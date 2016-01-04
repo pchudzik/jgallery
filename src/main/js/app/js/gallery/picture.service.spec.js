@@ -59,9 +59,9 @@ describe('picture.service.spec.js', () => {
 			});
 
 	withParams([
-		['mini', 120],
-		['small', 260],
-		['big', 600],
+		['mini', 220],
+		['small', 460],
+		['big', 800],
 		['huge', 1200]
 	])
 		.it(type => `should add picture ${type} url`, (type, size) => {

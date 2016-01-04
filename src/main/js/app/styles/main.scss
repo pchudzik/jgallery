@@ -6,8 +6,8 @@ $icon-font-path: "../fonts/";
 }
 
 .thumbnail-image {
-  max-width: 350px;
-  max-height: 233px;
+  max-width: 480px;
+  max-height: 360px;
 }
 
 .image-view {
@@ -39,12 +39,25 @@ $icon-font-path: "../fonts/";
   }
 }
 
-.thumbnail {
-  padding: 0;
+.img-thumbnail {
+  padding: 0px;
+  max-width: 100%;
+  margin: auto;
   border: 5px solid #777;
+}
+
+.thumbnail {
+  padding: 25px;
+  border: none;
   display: block;
   margin: auto;
+  min-height: 300px;
 }
+
+.gallery-cover {
+  min-height: 300px;
+}
+
 .active-thumbnail {
   border-color: black;
 }

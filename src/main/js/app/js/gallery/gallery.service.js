@@ -14,7 +14,7 @@ function galleryService(apiUrl, httpClient, _) {
 	function assignCoverToGallery(gallery) {
 		return _.assign(
 			gallery,
-			{coverUrl: apiUrl('/galleries/' + encodeURIComponent(gallery.galleryName) + '/cover?width=360')});
+			{coverUrl: apiUrl('/galleries/' + encodeURIComponent(gallery.galleryName) + '/cover?width=560')});
 	}
 }
 

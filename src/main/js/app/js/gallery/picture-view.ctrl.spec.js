@@ -6,7 +6,7 @@ import PictureViewController from './picture-view.ctrl';
 describe('picture-view.ctrl.spec.js', () => {
 	const firstPicture = 0;
 	const secondPicture = 1;
-	const thumbnailCount = 6;
+	const thumbnailCount = 4;
 
 	let stateMock;
 
@@ -211,15 +211,15 @@ describe('picture-view.ctrl.spec.js', () => {
 			ctrl = createController(pics);
 		});
 
-		it('should display 6 thumbnails', () => {
+		it('should display 4 thumbnails', () => {
 			//when
 			ctrl.openBig(pics[middlePicture]);
 
 			//then
-			expect(ctrl.thumbnails).toEqual(_.slice(pics, middlePicture - 1, middlePicture + 5));
+			expect(ctrl.thumbnails).toEqual(_.slice(pics, middlePicture - 1, middlePicture + 3));
 		});
 
-		it('should display first 6 images if current big picture is first', () => {
+		it('should display first 4 images if current big picture is first', () => {
 			//when
 			ctrl.openBig(pics[firstPicture]);
 
@@ -227,7 +227,7 @@ describe('picture-view.ctrl.spec.js', () => {
 			expect(ctrl.thumbnails).toEqual(_.slice(pics, firstPicture, firstPicture + thumbnailCount));
 		});
 
-		it('should display first 6 images if current big picture is second', () => {
+		it('should display first 4 images if current big picture is second', () => {
 			//when
 			ctrl.openBig(pics[secondPicture]);
 
@@ -235,7 +235,7 @@ describe('picture-view.ctrl.spec.js', () => {
 			expect(ctrl.thumbnails).toEqual(_.slice(pics, firstPicture, firstPicture + thumbnailCount));
 		});
 
-		it('should display last 6 images if current picture is before last', () => {
+		it('should display last 4 images if current picture is before last', () => {
 			//when
 			ctrl.openBig(pics[beforeLastPicture]);
 
@@ -243,7 +243,7 @@ describe('picture-view.ctrl.spec.js', () => {
 			expect(ctrl.thumbnails).toEqual(_.slice(pics, pics.length - thumbnailCount, pics.length));
 		});
 
-		it('should display last 6 images if current picture is last', () => {
+		it('should display last 4 images if current picture is last', () => {
 			//when
 			ctrl.openBig(pics[lastPicture]);
 
