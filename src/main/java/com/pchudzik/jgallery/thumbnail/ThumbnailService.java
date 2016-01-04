@@ -28,7 +28,7 @@ public class ThumbnailService {
 	public Picture generateThumbnail(Picture picture, Optional<Integer> width, Optional<Integer> height) {
 		final Stopwatch stopwatch = Stopwatch.createStarted();
 
-		final BufferedImage sourceImage = ImageIO.read(picture.getInputStream());
+		final BufferedImage sourceImage = readImage(picture);
 		final BufferedImage thumbnail = scaleImage(sourceImage, width, height);
 		final byte[] result = writeImage(thumbnail);
 
@@ -42,16 +42,36 @@ public class ThumbnailService {
 	}
 
 	@SneakyThrows
+	private BufferedImage readImage(Picture picture) {
+		final Stopwatch stopwatch = Stopwatch.createStarted();
+		try {
+			return ImageIO.read(picture.getInputStream());
+		} finally {
+			log.trace("image read into memory in {}", stopwatch.stop());
+		}
+	}
+
+	@SneakyThrows
 	private BufferedImage scaleImage(BufferedImage sourceImage, Optional<Integer> width, Optional<Integer> height) {
-		final RatioCalculator ratioCalculator = new RatioCalculator(sourceImage.getWidth(), sourceImage.getHeight(), width, height);
-		return Scalr.resize(sourceImage, Method.AUTOMATIC, Mode.FIT_EXACT, ratioCalculator.getWidth(), ratioCalculator.getHeight());
+		final Stopwatch stopwatch = Stopwatch.createStarted();
+		try {
+			final RatioCalculator ratioCalculator = new RatioCalculator(sourceImage.getWidth(), sourceImage.getHeight(), width, height);
+			return Scalr.resize(sourceImage, Method.SPEED, Mode.FIT_EXACT, ratioCalculator.getWidth(), ratioCalculator.getHeight());
+		} finally {
+			log.trace("image scaled in {}", stopwatch.stop());
+		}
 	}
 
 	@SneakyThrows
 	private byte[] writeImage(BufferedImage thumbnail) {
-		final ByteArrayOutputStream result = new ByteArrayOutputStream();
-		ImageIO.write(thumbnail, THUMBNAIL_FORMAT, result);
-		return result.toByteArray();
+		final Stopwatch stopwatch = Stopwatch.createStarted();
+		try {
+			final ByteArrayOutputStream result = new ByteArrayOutputStream();
+			ImageIO.write(thumbnail, THUMBNAIL_FORMAT, result);
+			return result.toByteArray();
+		} finally {
+			log.trace("image written in {}", stopwatch.stop());
+		}
 	}
 
 	private String getSizeCompressionPercentage(long thumbnailSize, long sourceSize) {

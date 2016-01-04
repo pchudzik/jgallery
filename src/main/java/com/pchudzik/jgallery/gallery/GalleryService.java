@@ -1,6 +1,7 @@
 package com.pchudzik.jgallery.gallery;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.HiddenFileFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import java.util.stream.Collectors;
 /**
  * Created by pawel on 29.11.15.
  */
+@Slf4j
 @Service
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class GalleryService {
@@ -39,6 +41,7 @@ public class GalleryService {
 	}
 
 	private List<File> findFilesInRootDirectory() {
+		log.info("Listing galleries in directory {}", rootDirectory.getAbsolutePath());
 		final FileFilter filters = FileFilterUtils.and(
 				FileFilterUtils.directoryFileFilter(),
 				HiddenFileFilter.VISIBLE);
