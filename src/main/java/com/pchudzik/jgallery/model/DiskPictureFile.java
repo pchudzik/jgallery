@@ -17,13 +17,18 @@ public class DiskPictureFile implements PictureFile {
 	final File file;
 
 	@Override
-	public MediaType contentType() {
+	public MediaType getContentType() {
 		return MediaType.parseMediaType("image/" + URLConnection.guessContentTypeFromName(file.getName()));
 	}
 
 	@Override
 	@SneakyThrows
-	public InputStream pictureFile() {
+	public InputStream getPictureFile() {
 		return new FileInputStream(file);
+	}
+
+	@Override
+	public long getContentLength() {
+		return file.length();
 	}
 }

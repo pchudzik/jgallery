@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import java.time.LocalDate;
@@ -13,11 +14,16 @@ import java.time.LocalDate;
  * Created by pawel on 04.01.16.
  */
 @Getter
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Gallery extends BaseEntity {
+	@Basic(optional = false)
 	private String galleryLocation;
+
+	@Basic(optional = false)
 	private String name;
+
+	@Basic(optional = false)
 	private LocalDate creationDate;
 
 	@OneToOne

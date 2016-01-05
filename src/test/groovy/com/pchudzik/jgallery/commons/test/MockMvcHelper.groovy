@@ -3,6 +3,7 @@ package com.pchudzik.jgallery.commons.test
 import org.springframework.test.web.servlet.MockMvc
 
 import static com.pchudzik.jgallery.JGalleryConstatns.API_URL
+
 /**
  * Created by pawel on 06.12.15.
  */
@@ -11,7 +12,7 @@ class MockMvcHelper {
 		new ControllerTesterBuilder()
 	}
 
-	static controllerTester = { Object... controller ->
+	static MockMvc controllerTester(Object... controller) {
 		controllerTester()
 				.controllers(controller)
 				.build()

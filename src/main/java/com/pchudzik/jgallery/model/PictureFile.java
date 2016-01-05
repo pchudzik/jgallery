@@ -8,7 +8,9 @@ import java.io.InputStream;
  * Created by pawel on 04.01.16.
  */
 public interface PictureFile {
-	MediaType contentType();
+	MediaType getContentType();
 
-	InputStream pictureFile();
+	InputStream getPictureFile();
+
+	long getContentLength();
 }

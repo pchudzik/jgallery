@@ -35,15 +35,15 @@ class HttpHelper {
 		get(url, [:])
 	}
 
-	MockHttpServletRequestBuilder get(String url, Map params) {
+	MockHttpServletRequestBuilder get(String url, Map<String, String> params) {
 		MockMvcRequestBuilders
 				.get(generateParams(apiUrl + url, params))
 				.contentType(APPLICATION_JSON_UTF8)
 	}
 
-	private String generateParams(String url, Map params) {
+	private String generateParams(String url, Map<String, String> params) {
 		url + "?" + params
-				.collect { name, value -> encode(name, UTF_8) + "=" + encode(value, UTF_8) }
+				.collect { name, value -> encode(name, UTF_8.toString()) + "=" + encode(value, UTF_8.toString()) }
 				.join("&")
 	}
 }

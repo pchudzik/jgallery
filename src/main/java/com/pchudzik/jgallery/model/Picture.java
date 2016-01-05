@@ -17,27 +17,28 @@ import java.util.Optional;
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Entity
 public class Picture extends BaseEntity {
+	@Basic(optional = false)
 	String picturePath;
 
+	@Basic(optional = false)
 	String name;
-
-	String pictureType;
 
 	@ManyToOne(optional = false, fetch = FetchType.LAZY)
 	Gallery gallery;
 
+	@Basic(optional = false)
 	LocalDate creationDate;
 
-	@OneToOne(optional = false, fetch = FetchType.LAZY)
+	@OneToOne(optional = false, fetch = FetchType.LAZY, targetEntity = DatabasePictureFile.class, cascade = CascadeType.ALL)
 	PictureFile miniPicture;
 
-	@OneToOne(optional = false, fetch = FetchType.LAZY)
+	@OneToOne(optional = false, fetch = FetchType.LAZY, targetEntity = DatabasePictureFile.class, cascade = CascadeType.ALL)
 	PictureFile smallPicture;
 
-	@OneToOne(optional = false, fetch = FetchType.LAZY)
+	@OneToOne(optional = false, fetch = FetchType.LAZY, targetEntity = DatabasePictureFile.class, cascade = CascadeType.ALL)
 	PictureFile normalPicture;
 
-	@OneToOne(optional = false, fetch = FetchType.LAZY)
+	@OneToOne(optional = false, fetch = FetchType.LAZY, targetEntity = DatabasePictureFile.class, cascade = CascadeType.ALL)
 	PictureFile bigPicture;
 
 	@Transient
@@ -64,10 +65,6 @@ public class Picture extends BaseEntity {
 
 		public PictureBuilder name(String name) {
 			return addOperation(p -> p.name = name);
-		}
-
-		public PictureBuilder pictureType(String type) {
-			return addOperation(p -> p.pictureType = type);
 		}
 
 		public PictureBuilder gallery(Gallery gallery) {
